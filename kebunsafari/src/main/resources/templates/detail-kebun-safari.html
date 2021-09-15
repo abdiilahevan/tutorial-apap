@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Detail Kebun Safari</title>
+</head>
+<body>
+    <h2>Detail Kebun Safari</h2>
+        <p th:text="'ID Kebun Safari : ' + ${kebunSafari.getId()} "></p>
+        <p th:text="'Nama Kebun Safari : ' + ${kebunSafari.getNama()} "></p>
+        <p th:text="'Alamat : ' + ${kebunSafari.getAlamat()} "></p>
+        <p th:text="'Nomor Telepon : ' + ${kebunSafari.getNoTelp()} "></p>
+    <a href="/">Kembali</a>
+</body>
+</html>
