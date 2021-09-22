@@ -2,6 +2,51 @@
 ## Authors
 * **Abdillah Evan Nurdhiawan** - *1906398805* - *APAP-A*
 
+## Tutorial 2
+### What I have learned today
+Terdapat berbagai macam cara untuk meredirect halaman melalui search bar, dalam pengaksesan melalui backend di html & contoller juga berbagai macam cara, Saya mengetahui hal ini karena tadi ada error ketika mengikuti template
+
+### Contorller
+1. Cobalah untuk menambahkan sebuah Kebun dengan mengakses link
+berikut setelah menjalankan program:
+http://localhost:8080/kebun-safari/add?id=1&nama=Papa%20APAP&alamat=Maung%
+20Fasilkom&noTelepon=081xxx 
+Apa yang terjadi? Jelaskan mengapa hal tersebut
+dapat terjadi
+
+- Pada kali pertama menemui soal ini, Saya langsung menuju link yang ditanyakan dan berakibat pada error whitelabel yang tentunya dikarenakan tidak adanya file html yang dituju, karena belum dibuat.
+- Setelah dibuat, tentunya sudah meng-generate halaman yang diminta
+
+2. Menurut kamu anotasi @Autowired pada class Controller tersebut
+merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja
+@Autowired tersebut dalam konteks service dan controller yang telah kamu buat
+
+- Autowired tersebut merupakan implementasi dari konsep Dependency Injection yang berguna untuk mempersingkat kode dengan mengimplementasi constructor yang dibuat di interface
+- Pada tutorial ini, apap.tutorial.kebunsafari.service berperan sebagai interface yang diinject constructornya ke controller. Hal ini membuat kita tidak perlu lagi menulis ulang constructor di controller
+
+3. Cobalah untuk menambahkan sebuah Kebun dengan mengakses link
+berikut:
+http://localhost:8080/kebun-safari/add?id=1&nama=Papa%20APAP&alamat=Maung%
+20Fasilkom Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
+
+- Tentunya akan menampilkan error karena ada salah satu parameter yang tidak terisi, yaitu nomor telepon
+- Padahal pada controller, nomor telepon merupakan item wajib karena required = true
+
+4. Jika Papa APAP ingin melihat Kebun Safari dengan nama Papa APAP,
+link apa yang harus diakses?
+
+- Menggunakan ini bisa : http://localhost:8080/kebun-safari?id=1&nama=Papa%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx
+- Menggunakan ini juga bisa : http://localhost:8080/kebun-safari?id=1
+
+5. Tambahkan 1 contoh Kebun Safari lainnya sesukamu. Lalu cobalah
+untuk mengakses http://localhost:8080/ , apa yang akan ditampilkan? Sertakan juga
+bukti screenshotmu.
+
+- ![foto tutorial 2] (Image/Tutor2.png)
+
+### What did i dont understand
+sebenarnya sampai sekarang Saya tidak tahu kenapa kode Saya tidak bisa berjalan jika mengikuti template, masih menjadi misteri ilahi / vscode magic :D
+
 ## Tutorial 1
 ### What I have learned today
 Syntax yang digunakan untuk mata kuliah APAP ini masih sangat asing bagi Saya, Harus belajar lebih giat lagi

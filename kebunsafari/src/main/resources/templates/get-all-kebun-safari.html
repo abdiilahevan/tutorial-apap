@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Daftar Seluruh Kebun Safari</title>
+</head>
+<body>
+    <h2>Daftar Seluruh Kebun Safari</h2>
+    <div th:each="kebunSafari : ${listKebunSafari}">
+        <h3 th:text="'ID Kebun Safari : ' + ${kebunSafari.getId()} "></h3>
+        <p th:text="'Nama Kebun Safari : ' + ${kebunSafari.getNama()} "></p>
+        <p th:text="'Alamat : ' + ${kebunSafari.getAlamat()} "></p>
+        <p th:text="'Nomor Telepon : ' + ${kebunSafari.getNoTelp()} "></p>
+    </div>
+</body>
+</html>
