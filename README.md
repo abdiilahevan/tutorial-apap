@@ -2,6 +2,58 @@
 ## Authors
 * **Abdillah Evan Nurdhiawan** - *1906398805* - *APAP-A*
 
+## Tutorial 3
+### What i learn today
+banyak yang baru saya pelajari terutama mengenai masalah dependency karena banyak masalah
+
+1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model
+(@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
+
+- @AllArgsConstructor = Membuat constructor dengan parameter untuk setiap field di kelas tersebut secara otomatis untuk menhindari null.
+
+- @NoArgsConstructor = Membuat constructor tanpa parameter. Kalau karena satu dan lain hal tidak bisa digenerate, maka akan ada compiler error **Kecuali**  ada @NoArgsConstructor(force = true) maka akan menjadikan fieldnya 0/null/false.
+
+- @Setter = Membuat setter secara otomatis
+- @Getter = membuat getter secara otomatis
+
+- @Entity = Untuk mencatat apakah ini sebuat tabel atau sebuah entity
+- @Table = Untuk memberi nama tabel, maka dari itu sintaksnya adalah @Table(name = "XXX")
+
+Cr : https://projectlombok.org/features/constructor , https://projectlombok.org/features/GetterSetter , https://stackoverflow.com/questions/7259273/whats-the-difference-between-the-name-argument-in-entity-and-table-when-using#:~:text=2.%20%40Entity%20is%20useful%20with%20model%20classes%20to,that%20%40Entity%20is%20your%20table%20name%20by%20default.
+
+2. Pada class CabangDB, terdapat method findByNoCabang, apakah kegunaan dari method tersebut?
+
+- Mencari sebuah data dari tabel Cabang berdasarkan nomor dari cabang tersebut, parameter yang dimasukkan dalam kurung adalah nomor tabel yang dicari. Jika diumpamakan sebagai SQL mungkin akan menjadi Select "[Nomor yang dicari]" from NoCabang .
+
+3. Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn
+- @JoinTable menyimpan id dari kedua entity ke tabel terpisah
+    - Digunakan untuk menangani relation diantara 2 entity di tabel terpisah
+    - Digunakan untuk menormalisasi database + mengurangi redundancy
+
+- @JoinColumn menyimpan id dari entity lain digabungkan ke satu tabel
+    - Digunakan ketika terdapat relasi foreign key diantara dua entity
+    - Digunakan jika lebih membutuhkan performance karena tidak butuh tabel extra
+
+Cr : https://javakeypoint.wordpress.com/2020/04/21/difference-between-joincolumn-and-jointable-in-hibernate/
+
+4. Pada class PegawaiModel, digunakan anotasi @JoinColumn pada atribut cabang, apa kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa perbedaan nullable dan penggunaan anotasi @NotNull
+
+- Jika kita lihat full code nya : @JoinColumn(name = "noCabang", referencedColumnName = "noCabang", nullable = false)
+
+- JoinColumn berguna untuk menyatakan penggabungan antara tabel PegawaiModel dengan CabangModel (di atas dideclare import CabangModel) **Terkhusus untuk Kolom yang diinginkan**. 
+
+- name, singkatnya adalah kolom Foreign Key, sementara referencedColumnName berisi Primary Key, nullable adalah sebuah boolean yang menyatakan apakah kolom foreign key boleh null (defaultnya adalah true), pada contoh berarti data tidak boleh null.
+
+- nullable dan @NotNull tentunya berbeda dimana nullable berkaitan dengan Java sementara @NotNull berkaitan dengan database (JPA). Sebagai anotasi Java, nullable akan dicek terlebih dulu dibandingkan @NotNull. Dengann menggunakan nullable, maka database akan langsung membuat kolom not null, hal ini dapat compatible jika digunakan aplikasi lain ketika menggunakan database, namun lebih amannya gunakan keduanya.
+
+5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+- FetchType.LAZY = data akan diditangkap **Hanya** data akan yang digunakan saja, jika tidak digunakan tidak akan ditangkap, hal ini berlaku untuk seluruh data
+- CascadeType.ALL = mengatur cascade untuk setiap perubahan yang terjadi pada data (update dan delete), kerjanya seperti cascade pada sql
+- FetchType.EAGER = Semua data yang berelasi akan ditangkap sesaat setelah data digunakan 
+
+Cr : https://www.concretepage.com/hibernate/fetch_hibernate_annotation
+
+
 ## Tutorial 2
 ### What I have learned today
 Terdapat berbagai macam cara untuk meredirect halaman melalui search bar, dalam pengaksesan melalui backend di html & contoller juga berbagai macam cara, Saya mengetahui hal ini karena tadi ada error ketika mengikuti template
