@@ -33,6 +33,10 @@ public class PegawaiModel implements Serializable{
     @Column(name = "jenis_kelamin", nullable = false)
     private String jenisKelamin;
 
+    @NotNull
+    @Column(name = "umur", nullable = false)
+    private int umurPegawai;
+
     //Relasi dengan CabangModel
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "noCabang", referencedColumnName = "noCabang", nullable = false)
