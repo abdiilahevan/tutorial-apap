@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+ 
+<head>
+  <title>Emsidi</title>
+  <meta charset="UTF-8">
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+ 
+<body>
+<nav th:replace="fragments/fragment :: navbar('Menu')"></nav>
+<div th:if="*{listMenu.size() != 0}">
+        <table class = "table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>No Menu</th>
+                    <th>Nama Menu</th>
+                    <th>Deskripsi</th>
+                    <th>Availability</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each = "menu, iterationStatus : ${listMenu}"
+                th:style = "${iterationStatus.even} ? 'font-weight:bold;'">
+                <td th:text="${iterationStatus.count}"></td>
+                <td th:text="${menu.noMenu}"></td>
+                <td th:text="${menu.namaMenu}"></td>
+                <td th:text="${menu.deskripsiMenu}"></td>
+                <td th:if="${menu.isAvailable} == true">Yes</td>
+                <td th:if="${menu.isAvailable} == false">No</td>
+            </tr>
+            </tbody>
+        </table>
+</div>
+<a th:href="@{/menu/add}" class="mx-2 btn btn-outline-dark">Tambah Menu</a>
+<a th:href="@{/}" class="mx-2 btn btn-dark">Kembali</a>
+<div th:unless="*{listMenu.size() != 0}">
+    <h2 th:text="'Tidak ada Menu'"></h2>
+</div>
+</body>
+ 
+</html>

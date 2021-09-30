@@ -2,6 +2,23 @@
 ## Authors
 * **Abdillah Evan Nurdhiawan** - *1906398805* - *APAP-A*
 
+## Tutorial 4
+### What I learn in these 2 days
+HTML sangat menyenangkan sekaligus sulit
+
+1. Jelaskan perbedaan th:include dan th:replace!
+- Dari arti secara bahasanya sendiri include adalah memasukkan, sementara replace mengganti
+- th: include akan memasukkan konten yang ada di file fragment ke tag tujuan
+- th: replace akan mengganti konten yang ada di tag tujuan dengan konten yang ada di fragmen
+
+2. Jelaskan apa fungsi dari th:object!
+- th:object digunakan untuk mengspesifikasi objek yang disubmit dari form ke tempat penyimpanan sesuai dengan nama objectnya, hal ini dapat ditemui di file bertajuk form di html pada lab 4 ini.
+
+3. Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?
+- tanda * digunakan untuk mengambil atribut yang sudah didefinisikan dari suatu objek yang ingin diakses
+- tanda $ digunakan untuk atribut yang belum didefinisikan dari suatu objek, sehingga harus mengakses objeknya terlebih dahulu
+
+
 ## Tutorial 3
 ### What i learn today
 banyak yang baru saya pelajari terutama mengenai masalah dependency karena banyak masalah

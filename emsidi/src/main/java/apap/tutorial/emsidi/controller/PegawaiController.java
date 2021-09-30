@@ -5,6 +5,8 @@ import apap.tutorial.emsidi.model.PegawaiModel;
 import apap.tutorial.emsidi.service.CabangService;
 import apap.tutorial.emsidi.service.PegawaiService;
 
+import java.time.LocalTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class PegawaiController {
@@ -51,8 +55,11 @@ public class PegawaiController {
         Model model
     ) {
         PegawaiModel pegawai = pegawaiService.getPegawaiByNoPegawai(noPegawai);
-        model.addAttribute("pegawai", pegawai);
-        return "form-update-pegawai";
+        if(pegawaiService.jamWaktuTutup(pegawai)==true){
+            model.addAttribute("pegawai", pegawai);
+            return "form-update-pegawai";
+        }
+        return "error-page";
     }
 
     @PostMapping("/pegawai/update")
@@ -78,4 +85,20 @@ public class PegawaiController {
         }
         return "error-page";
     }
+
+    @PostMapping("/pegawai/delete")
+    public String deletePegawaiSubmit(
+        @ModelAttribute CabangModel cabang,
+        Model model) {
+        LocalTime now = LocalTime.now();
+        if(now.isBefore(cabang.getWaktuBuka()) || now.isAfter(cabang.getWaktuTutup())){
+            for (PegawaiModel pegawai: cabang.getListPegawai()){
+                pegawaiService.deletePegawai(pegawai);
+            }
+            model.addAttribute("noCabang", cabang.getNoCabang());
+            return "delete-pegawai";
+        }
+        return "error-page";
+    }
+    
 }
