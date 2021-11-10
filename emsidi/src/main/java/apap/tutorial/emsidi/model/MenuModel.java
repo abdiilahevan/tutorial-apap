@@ -25,6 +25,11 @@ public class MenuModel implements Serializable{
     @Size(max = 30)
     @Column(name = "nama_menu", nullable = false)
     private String namaMenu;
+
+    @NotNull
+    @Size(max = 30)
+    @Column(name = "deskripsi_menu", nullable = false)
+    private String deskripsiMenu;
     
     @NotNull
     @Column(name = "is_available", nullable = false)

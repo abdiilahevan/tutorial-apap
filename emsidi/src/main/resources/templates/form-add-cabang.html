@@ -2,8 +2,10 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <title>Emsidi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"></head>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 <body>
+<nav th:replace="fragments/fragment :: navbar('Cabang')"></nav>
 <div class="container">
     <div class="card m-4 p-4">
         <div class="card-body">
@@ -12,27 +14,47 @@
                 <br>
                 <form th:action="@{/cabang/add}" th:object="${cabang}" method="POST">
                     Nama Cabang : <br>
-                    <input required class="form-control" type="text" name="namaCabang"/>
+                    <input required class="form-control" type="text" name="namaCabang" th:value="*{namaCabang}"/>
                     <br><br>
  
                     Alamat : <br>
-                    <input required class="form-control" type="text" name="alamatCabang"/>
+                    <input required class="form-control" type="text" name="alamatCabang" th:value="*{alamatCabang}"/>
                     <br><br>
  
                     Nomor Telepon : <br>
-                    <input required class="form-control" type="text" name="noTeleponCabang"/>
+                    <input required class="form-control" type="text" name="noTeleponCabang" th:value="*{noTeleponCabang}"/>
                     <br><br>
  
                     Waktu Buka : <br>
-                    <input required class="form-control" type="time" name="waktuBuka" />
+                    <input required class="form-control" type="time" name="waktuBuka" th:value="*{waktuBuka}"/>
                     <br><br>
  
                     Waktu Tutup : <br>
-                    <input required class="form-control" type="time" name="waktuTutup" />
+                    <input required class="form-control" type="time" name="waktuTutup" th:value="*{waktuTutup}"/>
                     <br><br>
- 
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                    <a class="btn btn-primary" href="/">Cancel</a>
+                <table class = "table">
+                    <thead>
+                    <tr>
+                        <th> Daftar Menu </th>
+                        <th><input class = "btn btn-primary" type=submit name = "addRow" value="tambah Row"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="menu, iterationStatus:*{listMenu}">
+                            <td>
+                                <select class="form-control" th:field="*{listMenu[__${iterationStatus.index}__].noMenu}">
+                                    <option th:each = "namaMenu: ${listMenu}" th:value = "${namaMenu.noMenu}" th:text = "${namaMenu.namaMenu}"/>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" type="submit" name = "deleteRow" th:value = "${iterationStatus.index}">delete</button>
+                            </td>
+                            <br>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary" name="save">Submit</button>
+                <a class="btn btn-primary" href="/">Home</a>
                 </form>
             </div>
         </div>
