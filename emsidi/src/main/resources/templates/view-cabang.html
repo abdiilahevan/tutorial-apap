@@ -52,11 +52,11 @@
                         <td>
                             <a class="btn btn-sm btn-primary" th:href="@{/pegawai/update/} + ${pegawai.noPegawai}">Update</a>
                         </td>
-                        <td>
-                            <input class="form-check-input" type="checkbox"
-                            th:field="*{listPegawai}" th:value="${pegawai.noPegawai}"
-                            id="fieldCheckDefault">
-                        </td>
+                            <td>
+                                <input class="form-check-input" type="checkbox"
+                                th:field="*{listPegawai}" th:value="${pegawai.noPegawai}"
+                                id="fieldCheckDefault">
+                            </td>
                         <form th:action="@{/pegawai/delete}" th:object="${cabang}" method="POST">
                         </form>
                     </tr>

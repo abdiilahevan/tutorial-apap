@@ -2,6 +2,27 @@
 ## Authors
 * **Abdillah Evan Nurdhiawan** - *1906398805* - *APAP-A*
 
+## Tutorial 5
+### What I learn today
+Labnya sulit T_T, tapi enjoy walau gakelar nomor 2. Penggunaan postman sangat berguna dalam proses pengembangan aplikasi karena menyimpan banyak shortcut pentng dalam melakukan test yang berguna dalam pengembangan
+1.  Apa itu Postman? Apa kegunaannya?
+- Postman adalah pekerjaan mengantar surat (bercanda)
+- Postman adalah aplikasi yang digunakan dalam melakukan API testing
+- Merupakan HTTP client yang menerima HTTP reqest dan dapat memberikan berbagai macam respon dan dapat mengeset respons yang diharapkan. in summary, sangat berguna dalam pengembangan aplikasi.
+
+2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty
+- JsonIgnoreProperties : Menandai property yang terhubung dengan kelas yang dikenai anotasi. akan berguna untuk menghentikan loop
+- JsonProperty : menandai property khusus seperti setter getter
+
+3.  Apa kegunaan atribut WebClient?
+- suatu komponen yang digunakan untuk melakukan HTTP Calls terhadap service lainnya.
+
+4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
+- Response entity : keseluruhan HTTP response, termasuk status code, header, dan body http
+- kegunaan : digunakan untuk mengonfigurais HTTP response
+- Binding Result : Objek dalam spring yang mengikat hasil validasi dan dapat mengatur error yang mungkin dapat muncul
+- Kegunaan : memprediksi error yang mungkin akan terjadi
+
 ## Tutorial 4
 ### What I learn in these 2 days
 HTML sangat menyenangkan sekaligus sulit

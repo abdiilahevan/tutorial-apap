@@ -10,10 +10,14 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
-@AllArgsConstructor
+@AllArgsConstructor 
 @NoArgsConstructor
+@JsonIgnoreProperties(value = {"cabang"}, allowSetters = true)
 @Setter 
 @Getter
 @Entity
@@ -32,6 +36,10 @@ public class PegawaiModel implements Serializable{
     @NotNull
     @Column(name = "jenis_kelamin", nullable = false)
     private String jenisKelamin;
+
+    @Size(max=30)
+    @Column(name = "umur")
+    private Integer umur;
 
     //Relasi dengan CabangModel
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
