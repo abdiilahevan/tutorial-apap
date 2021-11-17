@@ -41,12 +41,18 @@
             <li th:classappend="${page == 'Menu'} ? active : 'true'"class-"nav-item">
                 <a class="nav-link" href="/menu/viewall">Menu</a>
             </li>
+            <li class-"nav-item">
+                <a class="nav-link" href="/user/updatePassword">Update Password</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-Ig-0" th:action="@{/cabang/view}" method="GET">
             <input class="form-control mr-sm-2" type="search"
                     name="noCabang" placeholder="No Cabang" aria-Label="Search">
             <button class = "btn btn-outline-light my-2 my-sm-0" type = "submit">Search</button>
         </form>
+        <ul class = "navbar-nav pull-right">
+            <a class="nav-item nav-link text-light" th:href="@{/logout}">Logout</a>
+        </ul>
     </div>
 </nav>
 </body>

@@ -2,6 +2,35 @@
 ## Authors
 * **Abdillah Evan Nurdhiawan** - *1906398805* - *APAP-A*
 
+## Tutorial 6
+### What I learn today
+Labnya sulit T_T, tapi enjoy. sama seperti ppw, di apap juga bisa role based authorization
+
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
+yang telah anda buat) konsep tersebut diimplementasi?
+- Otentikasi adalah proses pengenalan seorang user di sebuah sistem, hal ini ditentukan dari jawaban si user apakah sesuai dengan kredensial user yang tersimpan di database sistem. apabila terjadi kecocokan kombinasi lock & key (dalam artian ini berarti username dan password) yang dimasukkan oleh user saat ditanya dengan yang tersimpan di databse, maka user dapat masuk.
+- Otorisasi berarti penentuan hak akses sumber daya sistem, masing - masing user dapat memiliki tingkat otorisasi yang sama maupun berbeda, tergantung degan kredensial yang dimiliki oleh user saat otentikasi
+- konsep otentikasi diaplikasikan saat sistem meminta kombinasi username dan password
+- konsep otorisasi  diaplikasikan saat user berhasil melewati tahap otentikasi dan dicek role apa yang dimiliki di package security
+
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya
+- BCrypt adalah fungsi hashing kata sandi yang berguna untuk mengenkripsikan saut arah ketika password sudah dienkripsi dan tidak dapat didekripsi kembali. 
+- BCryptPasswordEncoder adalah class dari spring boot yang berguna untuk menencode password menjadi kode unik agar sulit untuk ditiru dan meningkatkan keamanan password
+
+3.  Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa
+demikian?
+- Lebih baik menggunakan enkripsi karena merskipun dengan hashing lebih aman karena one way function yang mana akan sulit untuk mendapatkan password aslinya once sudah diset. dengan enkripsi maka akan lebih mudah mendapatkan password aslinya karena dengan adanya cara ini, user tidak perlu berkali kalai membuat akun ketika ia lupa password.
+
+4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+- Universal Unique Identifier (UUID) merupakan karakter random yang berguna sebagai id sebuah akun. UUID cocok dijadikan PK karena unique
+
+5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut
+padahal kita sudah memiliki class UserRoleServiceImpl.java?
+- UserDetailsServicelmpl.java berguna dalam proses otentikasi, yaitu memvalidasi username dan password yang diinput user dengan yang ada di database.
+- UserServicelmpl mendefinisikan hal yang dapat dilakukan oleh user yang sedang login dan apa yang bisa dilakukan dengan user di database. 
+- Sedangkan RoleServiceImpl mendefinisikan hal yang dapat dilakukan oleh role tersebut dan apa
+yang bisa dilakukan dengan role di database.
+
 ## Tutorial 5
 ### What I learn today
 Labnya sulit T_T, tapi enjoy walau gakelar nomor 2. Penggunaan postman sangat berguna dalam proses pengembangan aplikasi karena menyimpan banyak shortcut pentng dalam melakukan test yang berguna dalam pengembangan
