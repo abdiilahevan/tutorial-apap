@@ -2,6 +2,42 @@
 ## Authors
 * **Abdillah Evan Nurdhiawan** - *1906398805* - *APAP-A*
 
+## Tutorial 7
+### What I learn today
+Ternyata lab apap yang ini slightly lebih mudah namun banyak yang dipelajari mengenai perbedaan basis penggunaan aplikasi web
+
+1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan
+    1. Telah tersedia button delete pada halaman My Cart. Buatlah sehingga saat button tersebut diklik, item akan terhapus dari My Cart dan tombol keranjang pada item tersebut di halaman List Item akan muncul kembali.
+
+    Jawab : Pendekatan yang digunakan adalah melakukan kebalikan dari metode ketika memasukkan ke keranjang dan kemudian menghapus barang yang ada di cart dengan cara menimpanya
+
+    2. Pada constructor, terdapat balance. Buatlah sehingga balance berkurang sesuai dengan harga item saat memasukkan item ke dalam keranjang belanja. Jika item dihapus dari My Cart, maka saldo bertambah kembali sesuai dengan harga item
+
+    Jawab : gunakan saja method balance untuk mengurangi maupun menambah balance berdasarkan harga dari item yang dipilih dengan method item.price
+
+    3. Jika balance kurang, maka tambahkan alert bahwa balance tidak cukup.
+
+    Jawab : Gunakan if else untuk mengatasinya, jika ternyata tidak cukup akan raise error menggunakan alert.
+
+2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?
+
+    Jawab : State adalah data / kondisi suatu komponen yang hanya dimiliki oleh komponen tersebut dan juga hanya dapat diubah oleh komponen tersebut dengan mengakses this.state.set[yang ingin diubah] dan juga metode lainnya juga bisa dilakukan jika pakai state untuk emrubah state
+
+    Props adalah kepanjangan dari property yang berfungsi sebagai parameter.Jika componentnya dalam bentuk class maka prop ini property dari class nya yang diakses melalui keyword ‘this’. Sedangkan jika component dalam bentuk function maka diakses secara langsung saja.
+
+3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya
+
+    Jawab : Keuntungan menggunakan component adalah dapat membuat aplikasi lebih mudah untuk dikembangkan dan dikelola karena tidak ada ketergantungan antar satu component yang satu dengan lainnya. Selain itu, component juga dapat digunakan secara berulang pada component lainnya yang membutuhkan. Dengan component juga akan membuat project menjadi lebih konsisten. Contohnya pada tutorial ini yaitu membuat component Item dan List. Dengan component Item yang hanya berfokus pada satu barang saja dapat dibuatkan list nya dengan component List yang terdiri dari satu atau lebih Item.
+
+4. Apa perbedaan class component dan functional component?
+    Class Component : (a) membutuhkan constructor untuk menyimpan state, (b) Menggunakan metode state untuk menentukan apa yang terjadi pada komponennya (statefull), (c) Harus dirender
+
+    Functional Component : (a) Tidak memerlukan constructor, (b) langsung saja, tidak pakai state (stateless), (c) tidak ada metode render
+
+5. Dalam react, apakah perbedaan component dan element?
+    Element : Kembalian dari fungsi komponen atau merupakan objek kembalian dari fungsi komponen
+    component : fungsi dalam sistem yang membangun sistem (menjadi blueprint dan backbone dari aplikasi)
+    
 ## Tutorial 6
 ### What I learn today
 Labnya sulit T_T, tapi enjoy. sama seperti ppw, di apap juga bisa role based authorization
