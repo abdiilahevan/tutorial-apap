@@ -89,6 +89,8 @@
                 <td th:text="${menu.deskripsiMenu}"></td>
                 <td th:if="${menu.isAvailable} == true">Yes</td>
                 <td th:if="${menu.isAvailable} == false">No</td>
+                <a class="btn btn-primary" th:href="@{/menu/update/} + ${menu.noMenu}">update Menu</a>
+                <a class="btn btn-primary" th:href="@{/menu/delete/} + ${menu.noMenu}">Delete Menu</a>
             </tr>
             </tbody>
         </table>

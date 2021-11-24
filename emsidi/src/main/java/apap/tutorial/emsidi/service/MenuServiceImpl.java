@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
  
 import java.util.List;
+import java.util.Optional;
  
 @Service
 public class MenuServiceImpl implements MenuService{
@@ -29,5 +30,11 @@ public class MenuServiceImpl implements MenuService{
     @Override
     public void updateMenu(MenuModel menu){
         menuDb.save(menu);
+    }
+
+    @Override
+    public MenuModel getMenuByNoMenu(Long noMenu){
+        Optional<MenuModel> menu = menuDb.findById(noMenu);
+        return menu.get();
     }
 }

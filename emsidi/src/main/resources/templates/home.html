@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <title> Emsidi </title>
@@ -54,7 +54,9 @@
 </nav>
 -->
 <div class="d-flex justify-content-center">
-    <div class="m-4"
+    <div class="m-4">
+        <h2 th:text="'Hello ' + ${#httpServletRequest.remoteUser}+'!'">Login as</h2>
+        <br>
         <h2>Selamat datang di Emsidi</h2>
         <div class ="d-flex justify-content-center">
             <a th:href="@{/cabang/viewall}" class="mx-2 btn btn-dark">Lihat semua cabang</a>
@@ -63,6 +65,9 @@
         <div class ="my-3 d-flex justify-content-center">
             <a th:href="@{/menu/viewall}" class="mx-2 btn btn-dark">Lihat semua Menu</a>
             <a th:href="@{/menu/add}" class="mx-2 btn btn-outline-dark">Tambah Menu</a>
+        </div>
+        <div class ="my-3 d-flex justify-content-center" sec:authorize="hasAuthority('Admin')">
+            <a th:href = "@{/user/viewall}" class = "mx-2 btn btn-outline-warning"> Lihat User</a>
         </div>
     </div>
 </div>
