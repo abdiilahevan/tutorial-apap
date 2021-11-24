@@ -76,21 +76,21 @@ public class UserServiceImpl implements UserService{
 
         passwordContainsLetter = newPassword.matches(".*[a-zA-Z]+.*");
 
-        if(newPassword.equals(oldPassword)){
-            error = "Password baru dan password lama tidak boleh sama, proses update password dibatalkan";
-        }
-
         if(!newPassword.equals(confirmedNewPassword)){
             error = "Password baru dan konfirmasi password baru tidak sama, proses update password dibatalkan";
         }
         
+        if(oldPassword.equals(newPassword) || oldPassword.equals(confirmedNewPassword)){
+            error = "Password baru dan password lama tidak boleh sama, proses update password dibatalkan";
+        }
+
         if(newPassword.length()>=8){
-            for (char i : newPassword.toCharArray()) {
-                if (Character.isDigit(i)){
-                    digitInPassword = true;
-                    return "update-password-berhasil";
+                for (char i : newPassword.toCharArray()) {
+                    if (Character.isDigit(i)){
+                        digitInPassword = true;
+                        return "update-password-berhasil";
+                    }
                 }
-            }
         }
 
         if(!passwordContainsLetter){
