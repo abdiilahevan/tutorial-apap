@@ -40,7 +40,7 @@ export default class Home extends React.Component {
                                 <List  
                                     title="My Cart"
                                     items = {this.state.cartItems}
-                                    onItemClick={this.handleDeleteItemInCart}
+                                    onItemClick={this.deleteAllCart}
                                 ></List>
                             </div>
                         ) : <div className="col-sm">
@@ -84,6 +84,22 @@ export default class Home extends React.Component {
             this.updateShopItem(newItem, false)
         }
         this.setState({ cartItems: newItems, balance: (this.state.balance + newItem.price) });
+    }
+
+    deleteAllCart = (item) => {
+        var deleteCart1 = [...this.state.cartItems].length
+        for (var i = 0 ; i < deleteCart1 ; i++){
+            const newItems = [...this.state.cartItems];
+            const newItem = {...item};
+            const deleteCart = newItems.findIndex((it) => it.id === newItem.id);
+            if(deleteCart > -1){
+                newItem.inCart = false;
+                newItems.splice(deleteCart, 1);
+                this.updateShopItem(newItem, false)
+            }
+            this.setState({ cartItems: newItems, balance: (this.state.balance + newItem.price) });
+        }
+
     }
 
     updateShopItem = (item,inCart) => {
