@@ -9,4 +9,5 @@ public interface MenuService {
     void addMenu(MenuModel menu);
     void deleteMenu(MenuModel menu);
     void updateMenu(MenuModel menu);
+    MenuModel getMenuByNoMenu(Long noMenu);
 }
