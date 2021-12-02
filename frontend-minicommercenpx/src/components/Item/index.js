@@ -14,6 +14,9 @@ const Item = (props) => {
             <Button action={handleEdit}>
                 Edit
             </Button>
+            <Button action={handleDelete}>
+                Delete
+            </Button>
         </div>
     );
 };

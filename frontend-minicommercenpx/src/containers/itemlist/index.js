@@ -13,6 +13,7 @@ class ItemList extends Component {
             isLoading: false,
             isCreate: false,
             isEdit: false,
+            isSearch: false,
             id:"",
             title:"",
             price:0,
@@ -20,12 +21,16 @@ class ItemList extends Component {
             category:"",
             quantity:0
         };
+        this.handleClickLoading = this.handleClickLoading.bind(this);
         this.handleAddItem = this.handleAddItem.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.handleChangeField = this.handleChangeField.bind(this);
         this.handleEditItem = this.handleEditItem.bind(this);
         this.handleSubmitItem = this.handleSubmitItem.bind(this);
         this.handleSubmitEditItem = this.handleSubmitEditItem.bind(this);
+        this.handleDeleteItem = this.handleDeleteItem.bind(this);
+        this.handleSubmitDeleteItem = this.handleSubmitDeleteItem.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
     handleClickLoading() {
         const currentLoading = this.state.isLoading;
@@ -48,6 +53,18 @@ class ItemList extends Component {
             quantity: item.quantity
         })
     }
+
+    handleDeleteItem(item) {
+        this.setState({
+            isEdit: false,
+            id: item.id,
+            title: item.title,
+            price: item.price,
+            description: item.description,
+            category: item.category,
+            quantity: item.quantity
+        })
+    }
         
 
     handleChangeField(event){
@@ -55,12 +72,37 @@ class ItemList extends Component {
         this.setState({ [name]: value });
     }
 
+    handleSearch(event) {
+        if(!event){
+            return this.loadData
+        }else{
+            try{
+                const { name,value } = event.target;
+                this.setState({ [name]: value });
+                this.loadData1();
+            }catch (error){
+                alert("Oops terjadi masalah pada server");
+                console.log(error);
+            }
+        }
+
+    }
     handleCancel(event){
         event.preventDefault();
         this.setState({ isCreate:false, isEdit:false })
     }
     componentDidMount() {
         this.loadData();
+    }
+    async loadData1(){ //untuk search
+        try {
+            const { data } = await APIConfig.get(`/item?title=${this.state.search}`);
+            this.setState({ items: data.result });
+        } 
+        catch (error) {
+            alert("Oops terjadi masalah pada server");
+            console.log(error);
+        }
     }
     async loadData() {
         try {
@@ -129,6 +171,26 @@ class ItemList extends Component {
         this.handleCancel(event);
     }
 
+    async handleSubmitDeleteItem(event) {
+        event.preventDefault();
+        try {
+            await APIConfig.delete(`/item/${this.state.id}`);
+            this.setState({
+                id: "",
+                title: "",
+                price: 0,
+                description: "",
+                category: "",
+                quantity: 0
+            })
+            this.loadData();
+        } catch (error) {
+        alert("Oops terjadi masalah pada server");
+        console.log(error);
+        }
+        this.handleCancel(event);
+    }
+
 
     render() {
         return (
@@ -136,7 +198,14 @@ class ItemList extends Component {
                 <h1 className={classes.title}>
                     All Items
                 </h1>
-                
+                    <input 
+                    className = {classes.textField}
+                    type="text"
+                    placeholder="Search Item"
+                    name="search"
+                    value={this.state.search}
+                    onChange={this.handleSearch}
+                    />
                 <Button action={this.handleAddItem}>
                     Add Item
                 </Button>
@@ -151,6 +220,7 @@ class ItemList extends Component {
                             category={item.category}
                             quantity={item.quantity}
                             handleEdit={() => this.handleEditItem(item)}
+                            handleDelete={() => this.handleDeleteItem(item)}
                         />
                     ))}
                 </div>
